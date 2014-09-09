@@ -52,20 +52,22 @@
     Ipsum.prototype.generate = function (n, type) {
         var output = [],
             func = null,
-            delimiter = ' ';
+            delimiter = ' '
+            n = Math.abs(n) || this.dictionary.length;
 
         switch (type) {
             case 'sentence':
+            case 'sentences':
                 func = this.generateSentence;
                 break;
 
             case 'paragraph':
+            case 'paragraphs':
                 func = this.generateParagraph;
                 delimiter = "\n";
                 break;
 
-            case 'word':
-            default:
+            default: // words
                 func = this.getNextWord;
                 break;
         }
